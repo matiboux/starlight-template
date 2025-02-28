@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config'
+import { defineConfig, envField } from 'astro/config'
 import starlight from '@astrojs/starlight'
 import tailwindcss from '@tailwindcss/vite'
 
@@ -35,5 +35,12 @@ export default defineConfig({
 		plugins: [
 			tailwindcss(),
 		],
+	},
+	env: {
+		schema: {
+			GITHUB_REPOSITORY_URL: envField.string({ context: 'client', access: 'public', optional: true }),
+			GITHUB_SHA: envField.string({ context: 'client', access: 'public', optional: true }),
+		},
+		validateSecrets: true,
 	},
 })
