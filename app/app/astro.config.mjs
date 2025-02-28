@@ -11,6 +11,16 @@ export default defineConfig({
 			editLink: {
 				baseUrl: 'https://github.com/matiboux/starlight-template/edit/main/app/app/',
 			},
+			locales: {
+				root: {
+					label: 'English',
+					lang: 'en',
+				},
+				en: {
+					label: 'Français',
+					lang: 'fr',
+				},
+			},
 			social: {
 				github: 'https://github.com/matiboux/starlight-template',
 			},
