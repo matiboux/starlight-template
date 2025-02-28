@@ -7,18 +7,8 @@ on:
     branches:
       # Production
       - main
-      - master
-      - prod
-      - production
-      # Pre-production
-      - staging
-      - preprod
-      - preproduction
       # Development
       - dev
-      - develop
-      - development
-      - test
     paths:
       # CI files
       - '.github/workflows/check.yml'
@@ -56,6 +46,26 @@ jobs:
         uses: actions/checkout@v4
 
       # Execution steps
+
+      - name: Copy Git history in app source folder
+        run: |
+          # Copy app source code git history
+          # Initialize Git repository in app source code directory
+          (
+            cd app/app &&
+            rm -rf .git &&
+            git init -b main &&
+            git config receive.denyCurrentBranch ignore
+          )
+          # Get Git history of app source code
+          git subtree split --prefix=app/app -b app-history
+          # Push Git history to app source code directory
+          (
+            git remote add app ./app/app/.git &&
+            git push app app-history:main &&
+            git branch -D app-history &&
+            git remote remove app
+          )
 
       - name: Pull dependencies
         run: |
