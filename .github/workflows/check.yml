@@ -10,7 +10,7 @@ on:
       - master
       - prod
       - production
-      # Pre-production
+      # Staging
       - staging
       - preprod
       - preproduction
