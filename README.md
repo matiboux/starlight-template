@@ -1,5 +1,7 @@
 # Starlight Template
 
+<!-- Uses `matiboux/astro-template` on commit `32d630c77aef23e3c26739ac4aac4768e7b85973`. -->
+
 Template project for a Starlight documentation site.
 
 Learn more about Starlight on [starlight.astro.build](https://starlight.astro.build/). It is powered by the Astro framework, learn more about it on [astro.build](https://astro.build/).
