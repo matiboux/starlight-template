@@ -38,8 +38,12 @@ export default defineConfig({
 	},
 	env: {
 		schema: {
+			// Deployment configuration
 			GITHUB_REPOSITORY_URL: envField.string({ context: 'client', access: 'public', optional: true }),
 			GITHUB_SHA: envField.string({ context: 'client', access: 'public', optional: true }),
+			VERSION_TAG: envField.string({ context: 'client', access: 'public', optional: true }),
+			// Application configuration
+			// Add env vars for your application here.
 		},
 		validateSecrets: true,
 	},
