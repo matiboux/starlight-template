@@ -1,7 +1,5 @@
 # Starlight Template
 
-<!-- Uses `matiboux/astro-template` on commit `32d630c77aef23e3c26739ac4aac4768e7b85973`. -->
-
 Template project for a Starlight documentation site.
 
 Learn more about Starlight on [starlight.astro.build](https://starlight.astro.build/). It is powered by the Astro framework, learn more about it on [astro.build](https://astro.build/).
@@ -40,6 +38,6 @@ The site will be available at [http://localhost:8080](http://localhost:8080).
 
 ## License
 
-Copyright (c) 2025 [Matiboux](https://github.com/matiboux) ([matiboux.me](https://matiboux.me))
+Copyright (c) 2024-2025 [Matiboux](https://github.com/matiboux) ([matiboux.me](https://matiboux.me))
 
 Licensed under the [MIT No Attribution License (MIT-0)](https://opensource.org/license/MIT-0). You can see a copy in the [LICENSE](LICENSE) file.
