@@ -3,9 +3,9 @@ import path from 'node:path'
 
 import { getCollection, getEntry } from 'astro:content'
 import { getRelativeLocaleUrl } from 'astro:i18n'
+import type { DataEntryMap } from 'astro:content'
 import type { SidebarEntry } from '@astrojs/starlight/utils/routing/types'
 import type { StarlightUserConfig } from '@astrojs/starlight/types'
-import type { DataEntryMap } from 'astro:content'
 
 const SIDEBAR_CONFIG_ROOT = path.resolve('./src/content/docs')
 
@@ -272,8 +272,8 @@ export async function getSidebarConfig(
 	// slugPath may be empty for the root path (home page)
 	const slugSegments = slugPath.split('/').filter(Boolean)
 
-	let sidebarConfig = undefined
-	let sidebarConfigSlug = undefined
+	let sidebarConfig: NonNullable<Awaited<ReturnType<typeof loadConfig>>> = []
+	let sidebarConfigSlug: string | undefined = undefined
 	for (let i = slugSegments.length; i >= 0; --i)
 	{
 		const slugSegment = slugSegments.slice(0, i).join('/')
@@ -285,11 +285,6 @@ export async function getSidebarConfig(
 			sidebarConfigSlug = slugSegment
 			break
 		}
-	}
-
-	if (!sidebarConfig)
-	{
-		throw new Error(`Sidebar config not found for path '${slugPath}'`)
 	}
 
 	return Promise.all(
