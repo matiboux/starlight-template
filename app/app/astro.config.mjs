@@ -29,9 +29,9 @@ export default defineConfig({
 					lang: 'fr',
 				},
 			},
-			social: {
-				github: 'https://github.com/matiboux/starlight-template',
-			},
+			social: [
+				{ icon: 'github', label: 'GitHub', href: 'https://github.com/matiboux/starlight-template' },
+			],
 			customCss: [
 				'./src/styles/global.css',
 			],
