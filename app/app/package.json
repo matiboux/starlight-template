@@ -26,8 +26,8 @@
   "homepage": "https://github.com/matiboux/starlight-template#readme",
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/starlight": "^0.32.6",
-    "@astrojs/starlight-tailwind": "^3.0.1",
+    "@astrojs/starlight": "^0.35.2",
+    "@astrojs/starlight-tailwind": "^4.0.1",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/twemoji": "^1.2.4",
     "@iconify/tailwind4": "^1.0.6",
