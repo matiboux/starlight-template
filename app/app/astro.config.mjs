@@ -16,6 +16,9 @@ export default defineConfig({
 			editLink: {
 				baseUrl: 'https://github.com/matiboux/starlight-template/edit/main/app/app/',
 			},
+			// Sidebar is overridden in this project
+			// Set config to empty here to avoid useless computation
+			sidebar: [],
 			locales: {
 				root: {
 					label: 'English',
@@ -34,6 +37,10 @@ export default defineConfig({
 			],
 			lastUpdated: true,
 			pagination: false,
+			components: {
+				Sidebar: '~/components/overrides/Sidebar.astro',
+			},
+			credits: false,
 		}),
 	],
 	vite: {
