@@ -5,7 +5,10 @@
     "baseUrl": ".",
     "paths": {
       "/*": [ "*" ],
-      "~/*": [ "src/*" ]
+      "~/*": [ "src/*" ],
+      "@astrojs/starlight/utils/*": [
+        "./node_modules/@astrojs/starlight/utils/*"
+      ]
     }
   }
 }
