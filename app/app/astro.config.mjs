@@ -11,8 +11,8 @@ export default defineConfig({
 	},
 	integrations: [
 		starlight({
-			title: 'Starlight template',
-			description: 'Documentation website with Starlight',
+			title: 'Starlight Template',
+			description: 'Template project for a Starlight documentation website',
 			editLink: {
 				baseUrl: 'https://github.com/matiboux/starlight-template/edit/main/app/app/',
 			},
