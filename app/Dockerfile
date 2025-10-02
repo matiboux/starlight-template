@@ -217,6 +217,11 @@ ARG UID
 # Set runtime environment
 ENV APP_ENV=prod
 
+# Install git, used to fetch history during build
+RUN --mount=type=cache,target=/var/cache/apt \
+	apt-get update && \
+	apt-get install -y git
+
 # Copy development dependencies
 ENV NODE_ENV=development
 COPY --from=deps_dev --link --chown="${UID}:0" /app/node_modules/ ./node_modules/
