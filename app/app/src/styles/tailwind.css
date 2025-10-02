@@ -1,23 +1,16 @@
 @layer base, starlight, theme, components, utilities;
 
-/* Starlight's Tailwind compatibility package.
-See the documentation for more information:
-https://starlight.astro.build/guides/css-and-tailwind/#tailwind-css
-*/
+/* Starlight's Tailwind compatibility package
+   See the documentation for more information:
+   https://starlight.astro.build/guides/css-and-tailwind/#tailwind-css */
 @import '@astrojs/starlight-tailwind';
 
-/* Tailwind CSS without Preflight. */
+/* Tailwind CSS without Preflight */
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
 
-/* Iconify Plugin for Tailwind CSS. */
+/* Iconify Plugin for Tailwind CSS */
 @plugin "@iconify/tailwind4";
-
-/* Tailwind CSS legacy configuration */
-/* Uncomment the `@config` line below to use your legacy configuration file.
-   This may be useful when upgrading from Tailwind CSS v3. Eventually, you should migrate to the
-   new custom theme configuration in the `@theme` block below. */
-/* @config "../../tailwind.config.mjs"; */
 
 /* Custom theme configuration */
 @theme {
