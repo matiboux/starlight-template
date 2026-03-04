@@ -97,18 +97,18 @@ jobs:
           # Copy app source code git history
           echo '::group::Init Git repository in app source code directory'
           (
-            cd app/app &&
+            cd app &&
             rm -rf .git &&
             git init -b main &&
             git config receive.denyCurrentBranch ignore
           )
           echo '::endgroup::'
           echo '::group::Get Git history of app source code'
-          git subtree split --prefix=app/app -b app-history
+          git subtree split --prefix=app -b app-history
           echo '::endgroup::'
           echo '::group::Push Git history to app source code directory'
           (
-            git remote add app ./app/app/.git &&
+            git remote add app ./app/.git &&
             git push app app-history:main &&
             git branch -D app-history &&
             git remote remove app

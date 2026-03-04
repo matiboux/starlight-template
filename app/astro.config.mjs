@@ -14,7 +14,7 @@ export default defineConfig({
 			title: 'Starlight Template',
 			description: 'Template project for a Starlight documentation website',
 			editLink: {
-				baseUrl: 'https://github.com/matiboux/starlight-template/edit/main/app/app/',
+				baseUrl: 'https://github.com/matiboux/starlight-template/edit/main/app/',
 			},
 			// Sidebar is overridden in this project
 			// Set config to empty here to avoid useless computation
