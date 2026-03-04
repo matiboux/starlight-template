@@ -139,9 +139,9 @@ ARG UID
 
 # Set runtime environment
 ENV APP_ENV=test
+ENV NODE_ENV=development
 
 # Copy dev dependencies
-ENV NODE_ENV=development
 COPY --from=deps_dev --link --chown="${UID}:0" /app/.astro/ ./.astro/
 COPY --from=deps_dev --link --chown="${UID}:0" /app/node_modules/ ./node_modules/
 
@@ -200,9 +200,9 @@ ARG UID
 
 # Set runtime environment
 ENV APP_ENV=dev
+ENV NODE_ENV=development
 
 # Copy dev dependencies
-ENV NODE_ENV=development
 COPY --from=deps_dev --link --chown="${UID}:0" /app/.astro/ ./.astro/
 COPY --from=deps_dev --link --chown="${UID}:0" /app/node_modules/ ./node_modules/
 
@@ -241,6 +241,7 @@ ARG UID
 
 # Set runtime environment
 ENV APP_ENV=prod
+ENV NODE_ENV=production
 
 # Install & configure git, used to fetch history during build
 RUN --mount=type=cache,target=/var/cache/apt \
@@ -249,7 +250,6 @@ RUN --mount=type=cache,target=/var/cache/apt \
 	git config --global --add safe.directory /app
 
 # Copy dev dependencies
-ENV NODE_ENV=development
 COPY --from=deps_dev --link --chown="${UID}:0" /app/node_modules/ ./node_modules/
 
 # Copy source code
