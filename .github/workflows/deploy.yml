@@ -114,6 +114,12 @@ jobs:
             git remote remove app
           )
           echo '::endgroup::'
+          echo '::group::Reset Git repository index in app source code directory'
+          (
+            cd app &&
+            git reset
+          )
+          echo '::endgroup::'
 
       - name: Pull dependencies
         run: |
