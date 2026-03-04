@@ -1,5 +1,7 @@
 # Services definition for building & deploying
 
+name: starlight-template
+
 services:
 
   app:

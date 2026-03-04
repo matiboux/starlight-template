@@ -15,8 +15,7 @@
     "astro:sync": "astro sync",
     "astro:preview": "astro preview",
     "test:vitest": "vitest run",
-    "test:playwright": "playwright test",
-    "deps:update": "pnpx npm-check-updates -t semver -u && pnpm i"
+    "test:playwright": "playwright test"
   },
   "repository": {
     "type": "git",
@@ -27,21 +26,30 @@
   },
   "homepage": "https://github.com/matiboux/starlight-template#readme",
   "dependencies": {
-    "@astrojs/check": "^0.9.5",
+    "@astrojs/check": "^0.9.6",
     "@astrojs/starlight": "^0.35.3",
-    "@astrojs/starlight-tailwind": "^4.0.1",
+    "@astrojs/starlight-tailwind": "^4.0.2",
     "@iconify-json/mdi": "^1.2.3",
-    "@iconify-json/twemoji": "^1.2.4",
-    "@iconify/tailwind4": "^1.1.0",
-    "@tailwindcss/vite": "^4.1.17",
-    "astro": "^5.15.9",
-    "sass": "^1.94.0",
-    "tailwindcss": "^4.1.17",
+    "@iconify-json/twemoji": "^1.2.5",
+    "@iconify/tailwind4": "^1.2.1",
+    "@tailwindcss/vite": "^4.2.1",
+    "astro": "^5.18.0",
+    "sass": "^1.97.3",
+    "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@playwright/test": "^1.56.1",
-    "@types/node": "^22.19.1",
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^22.19.13",
     "vitest": "^3.2.4"
+  },
+  "pnpm": {
+    "overrides": {
+      "volar-service-emmet@0.0.66": "0.0.67"
+    }
+  },
+  "imports": {
+    "#global.css": "./src/styles/global.css",
+    "#tailwind.css": "./src/styles/tailwind.css"
   }
 }

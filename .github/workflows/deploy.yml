@@ -95,30 +95,35 @@ jobs:
       - name: Copy Git history in app source folder
         run: |
           # Copy app source code git history
-          # Initialize Git repository in app source code directory
+          echo '::group::Init Git repository in app source code directory'
           (
-            cd app/app &&
+            cd app &&
             rm -rf .git &&
             git init -b main &&
             git config receive.denyCurrentBranch ignore
           )
-          # Get Git history of app source code
-          git subtree split --prefix=app/app -b app-history
-          # Push Git history to app source code directory
+          echo '::endgroup::'
+          echo '::group::Get Git history of app source code'
+          git subtree split --prefix=app -b app-history
+          echo '::endgroup::'
+          echo '::group::Push Git history to app source code directory'
           (
-            git remote add app ./app/app/.git &&
+            git remote add app ./app/.git &&
             git push app app-history:main &&
             git branch -D app-history &&
             git remote remove app
           )
+          echo '::endgroup::'
 
       - name: Pull dependencies
         run: |
           # docker compose pull --ignore-buildable
+          echo '::group::Pull details'
           docker compose \
             -f ./docker-compose.yml -f ./docker-compose.cicd.yml \
             --env-file .env \
             pull --ignore-buildable
+          echo '::endgroup::'
 
       - name: Build for production
         env:
@@ -136,20 +141,24 @@ jobs:
           # (Add env vars for your application here.)
         run: |
           # docker compose build
+          echo '::group::Build details'
           export DOCKER_UID="$(id -u)"
           docker compose \
             -f ./docker-compose.yml -f ./docker-compose.cicd.yml \
             --env-file .env \
             build
+          echo '::endgroup::'
 
       - name: Copy application files
         run: |
           # docker compose up
+          echo '::group::Run details'
           export DOCKER_UID="$(id -u)"
           docker compose \
             -f ./docker-compose.yml -f ./docker-compose.cicd.yml \
             --env-file .env \
             up
+          echo '::endgroup::'
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
