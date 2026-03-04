@@ -62,22 +62,25 @@ jobs:
       - name: Copy Git history in app source folder
         run: |
           # Copy app source code git history
-          # Initialize Git repository in app source code directory
+          echo '::group::Init Git repository in app source code directory'
           (
             cd app/app &&
             rm -rf .git &&
             git init -b main &&
             git config receive.denyCurrentBranch ignore
           )
-          # Get Git history of app source code
+          echo '::endgroup::'
+          echo '::group::Get Git history of app source code'
           git subtree split --prefix=app/app -b app-history
-          # Push Git history to app source code directory
+          echo '::endgroup::'
+          echo '::group::Push Git history to app source code directory'
           (
             git remote add app ./app/app/.git &&
             git push app app-history:main &&
             git branch -D app-history &&
             git remote remove app
           )
+          echo '::endgroup::'
 
       - name: Pull dependencies
         run: |
