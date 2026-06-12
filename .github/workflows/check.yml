@@ -57,10 +57,12 @@ jobs:
 
     steps:
 
-      # Preparation steps
+      # Initialization steps
 
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0 # Fetch full history
 
       # Execution steps
 
@@ -162,7 +164,7 @@ jobs:
 
     steps:
 
-      # Preparation steps
+      # Initialization steps
 
       - name: Checkout
         uses: actions/checkout@v6
@@ -288,7 +290,7 @@ jobs:
 
     steps:
 
-      # Preparation steps
+      # Initialization steps
 
       - name: Checkout
         uses: actions/checkout@v6
