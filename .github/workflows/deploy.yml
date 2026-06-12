@@ -52,6 +52,11 @@ jobs:
 
     steps:
 
+      # Initialization steps
+
+      - name: Checkout
+        uses: actions/checkout@v6
+
       # Dependency steps
 
       - name: Install jq
@@ -61,9 +66,6 @@ jobs:
           sudo apt-get -qy install --no-install-recommends jq
 
       # Preparation steps
-
-      - name: Checkout
-        uses: actions/checkout@v6
 
       - name: Load app config in environment
         env:
