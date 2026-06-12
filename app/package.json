@@ -27,27 +27,22 @@
   },
   "homepage": "https://github.com/matiboux/starlight-template#readme",
   "dependencies": {
-    "@astrojs/check": "^0.9.6",
+    "@astrojs/check": "^0.9.9",
     "@astrojs/starlight": "^0.35.3",
     "@astrojs/starlight-tailwind": "^4.0.2",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/twemoji": "^1.2.5",
-    "@iconify/tailwind4": "^1.2.1",
-    "@tailwindcss/vite": "^4.2.1",
-    "astro": "^5.18.0",
-    "sass": "^1.97.3",
-    "tailwindcss": "^4.2.1",
-    "typescript": "^5.9.3"
+    "@iconify/tailwind4": "^1.2.3",
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "^6.4.6",
+    "sass": "^1.100.0",
+    "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.58.2",
-    "@types/node": "^22.19.13",
-    "vitest": "^3.2.4"
-  },
-  "pnpm": {
-    "overrides": {
-      "volar-service-emmet@0.0.66": "0.0.67"
-    }
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^24.13.2",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.8"
   },
   "imports": {
     "#global.css": "./src/styles/global.css",
