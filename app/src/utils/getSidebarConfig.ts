@@ -4,8 +4,10 @@ import path from 'node:path'
 import { getCollection, getEntry } from 'astro:content'
 import { getRelativeLocaleUrl } from 'astro:i18n'
 import type { DataEntryMap } from 'astro:content'
-import type { SidebarEntry } from '@astrojs/starlight/utils/routing/types'
+import type { StarlightRouteData } from '@astrojs/starlight/route-data'
 import type { StarlightUserConfig } from '@astrojs/starlight/types'
+
+type SidebarEntry = StarlightRouteData['sidebar'][number]
 
 const SIDEBAR_CONFIG_ROOT = path.resolve('./src/content/docs')
 
