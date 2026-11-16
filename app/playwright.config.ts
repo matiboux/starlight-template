@@ -13,6 +13,7 @@ export default defineConfig({
 
   use: {
     baseURL: 'http://localhost:4321',
+    locale: 'en-US',
     trace: 'on-first-retry', // See https://playwright.dev/docs/trace-viewer.
   },
 
@@ -26,7 +27,7 @@ export default defineConfig({
 
   // Start the local server before starting tests
   webServer: {
-    command: 'pnpm run astro:preview',
+    command: 'pnpm run astro:preview --ignore-lock',
     url: 'http://localhost:4321',
   },
 });
