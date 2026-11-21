@@ -1,5 +1,5 @@
 ---
-import { GITHUB_REPOSITORY_URL, GITHUB_SHA, VERSION_TAG } from 'astro:env/client'
+import { GITHUB_REPOSITORY_URL, GITHUB_SHA } from 'astro:env/client'
 
 const labels = {
 	en: { lang: 'Selected language', version: 'Version', repo: 'GitHub repository' },
@@ -8,7 +8,7 @@ const labels = {
 
 const lang = Astro.currentLocale || 'en'
 const t = labels[lang as keyof typeof labels] ?? labels.en
-const version = VERSION_TAG || GITHUB_SHA
+const version = GITHUB_SHA
 const repoUrl = GITHUB_REPOSITORY_URL
 const repoName = repoUrl?.replace(/^https?:\/\/github\.com\//, '')
 ---
