@@ -1,25 +1,25 @@
 ---
-import { GITHUB_REPOSITORY_URL, GITHUB_SHA, VERSION_TAG } from 'astro:env/client'
+import { GITHUB_REPOSITORY_URL, GITHUB_SHA } from 'astro:env/client'
 
 const labels = {
-	en: { lang: 'Selected language', version: 'Version', repo: 'GitHub repository' },
-	fr: { lang: 'Langue sélectionnée', version: 'Version', repo: 'Dépôt GitHub' },
+	en: { lang: 'Selected language:', version: 'Version:', repo: 'GitHub repository:' },
+	fr: { lang: 'Langue sélectionnée :', version: 'Version :', repo: 'Dépôt GitHub :' },
 } as const
 
 const lang = Astro.currentLocale || 'en'
 const t = labels[lang as keyof typeof labels] ?? labels.en
-const version = VERSION_TAG || GITHUB_SHA
+const version = GITHUB_SHA || 'dev'
 const repoUrl = GITHUB_REPOSITORY_URL
-const repoName = repoUrl?.replace(/^https?:\/\/github\.com\//, '')
+const repoName = repoUrl?.match(/\.com\/([^/]+\/[^/]+)/)?.[1]
 ---
 
-<ul>
-	<li>{t.lang}: <code>{lang}</code>.</li>
-	{version && <li>{t.version}: <code>{version}</code>.</li>}
-	{repoUrl && (
-		<li>
-			{t.repo}:{' '}
-			<a href={repoUrl} target="_blank" rel="noopener noreferrer">{repoName}</a>.
-		</li>
-	)}
-</ul>
+<p>{t.lang} <code>{lang}</code>.</p>
+
+<p>{t.version} <code>{version}</code>.</p>
+
+{repoUrl && (
+	<p>
+		{t.repo}{' '}
+		<a href={repoUrl}>{repoName}</a>
+	</p>
+)}
