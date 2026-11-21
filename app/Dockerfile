@@ -16,9 +16,9 @@ ARG UID=1001
 # --
 # Upstream images
 
-FROM alpine:3.22 AS alpine_upstream
+FROM alpine:3.24 AS alpine_upstream
 FROM node:24-slim AS node_upstream
-FROM nginx:1.29-alpine AS nginx_upstream
+FROM nginx:1.30-alpine AS nginx_upstream
 
 
 # --
@@ -158,12 +158,6 @@ ARG APP_ENV=prod
 ENV APP_ENV=${APP_ENV}
 ENV NODE_ENV=production
 
-# Install & configure git, used to fetch history during build
-RUN --mount=type=cache,target=/var/cache/apt \
-	apt-get update && \
-	apt-get install -y git && \
-	git config --global --add safe.directory /app
-
 # Copy dev dependencies & source code
 COPY --from=source_dev --link /app/ ./
 
@@ -283,11 +277,12 @@ RUN pnpm exec playwright install --with-deps
 # Copy dev source code
 COPY --from=source_dev --link --chown="${UID}:0" /app/ ./
 
-# Build application
-RUN pnpm run build-only
-
 # Run as non-root user
 USER ${UID}:0
+
+# Build application
+# It produces build artifacts owned by the non-root user
+RUN pnpm run build-only
 
 CMD [ "sh", "-c", "pnpm run test:playwright --output /tmp/playwright/test-results" ]
 
@@ -347,6 +342,9 @@ ARG UID
 
 # Set runtime environment
 ENV APP_ENV=prod
+
+# Update Alpine packages for security
+RUN apk upgrade --no-cache
 
 # Copy nginx configuration
 COPY --link ./nginx/default.conf.template /etc/nginx/templates/
